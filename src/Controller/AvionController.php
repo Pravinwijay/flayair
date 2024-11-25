@@ -16,10 +16,6 @@ class AvionController extends AbstractController
     public function index(): Response
     {
 
-         // Créer une nouvelle instance d'Avion
-         $avion = new Avion();
-         // Utiliser le repository pour insérer l'avion
-         $avionRepository->save($avion);
         return $this->render('avion/index.html.twig', [
             'controller_name' => 'AvionController',
         ]);
