@@ -4,12 +4,9 @@ namespace App\Repository;
 
 use App\Entity\Avion;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\ORM\EntityManagerInterface;
 
-/**
- * @extends ServiceEntityRepository<Avion>
- */
 class AvionRepository extends ServiceEntityRepository
 {
     private $entityManager;
@@ -20,21 +17,24 @@ class AvionRepository extends ServiceEntityRepository
         $this->entityManager = $entityManager;
     }
 
-    public function findAll(): array{
-        return $this->findAll();
-    }
+    // Utilisez la méthode de base findAll() sans la redéfinir
+    // public function findAll(): array {
+    //     return parent::findAll();
+    // }
 
-    public function save(Avion $avion){
+    // Méthode pour enregistrer un avion
+    public function save(Avion $avion): void
+    {
         $this->entityManager->persist($avion);
         $this->entityManager->flush();
     }
 
+    // Méthode pour insérer un avion (vous pouvez appeler save ici si vous le souhaitez)
     public function insertAvion(Avion $avion): void
     {
-        $entityManager = $this->getEntityManager();
-        $entityManager->persist($avion);
-        $entityManager->flush();
+        $this->save($avion); // Appelle la méthode save() pour insérer l'avion
     }
+}
 
     //    /**
     //     * @return Avion[] Returns an array of Avion objects
@@ -60,4 +60,4 @@ class AvionRepository extends ServiceEntityRepository
     //            ->getOneOrNullResult()
     //        ;
     //    }
-}
+

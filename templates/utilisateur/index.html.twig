@@ -1,20 +1,156 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello UtilisateurController!{% endblock %}
+{% block title %}Bienvenue sur FlyAir{% endblock %}
 
 {% block body %}
 <style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f8f9fa; /* Couleur de fond pour le reste de la page */
+    }
+
+    .container {
+        display: flex;
+        flex-wrap: wrap; /* Adapte les sections pour les petits écrans */
+        align-items: center;
+        justify-content: space-between;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .left-section {
+        flex: 1;
+        padding: 20px;
+    }
+
+    .right-section {
+        flex: 0 0 350px; /* Largeur fixe de la section droite */
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .banner {
+        width: 100%;
+        height: auto;
+        display: block;
+        margin-bottom: 20px;
+    }
+
+    h1 {
+        color: #333;
+        font-size: 32px;
+    }
+
+    h1 span {
+        color: #f05d23; /* Couleur du mot "AIR" */
+    }
+
+    p {
+        font-size: 18px;
+        line-height: 1.6;
+        color: #555;
+    }
+
+    .logos {
+        margin-top: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logos img {
+        height: 50px;
+        margin: 0 10px;
+    }
+
+    /* Formulaire */
+    .right-section h2 {
+        font-size: 22px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-group label {
+        display: block;
+        font-size: 14px;
+        color: #333;
+        margin-bottom: 5px;
+    }
+
+    .form-group input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 14px;
+    }
+
+    .form-group a {
+        display: block;
+        font-size: 12px;
+        color: #f05d23;
+        text-align: right;
+        margin-top: 5px;
+        text-decoration: none;
+    }
+
+    .btn {
+        width: 100%;
+        background: #f05d23;
+        color: #fff;
+        padding: 10px;
+        border: none;
+        border-radius: 4px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    .btn:hover {
+        background: #e04c1a;
+    }
 </style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+<div class="container">
+    <!-- Section gauche -->
+    <div class="left-section">
+        <img class="banner" src="{{ asset('assets/images/BanniereHomepage.jpeg') }}" alt="Bannière">
+        <h1>BIENVENUE CHEZ FLY <span>AIR</span></h1>
+        <p>
+            Voyager n'a jamais été aussi simple et agréable ! Avec FlyAir, profitez d'une expérience unique dans les airs, que vous soyez en déplacement professionnel ou en vacances.
+        </p>
+        <p>
+            Découvrez nos destinations, nos offres exclusives, et réservez vos vols en toute simplicité. Connectez-vous pour accéder à vos réservations, consulter votre compte et bénéficier de services personnalisés.
+            Prêt pour votre prochaine aventure ? Envolez-vous avec nous dès aujourd'hui !
+        </p>
+        <div class="logos">
+            <img src="{{ asset('assets/images/footerAeroports.png') }}" alt="Aeroports">
+        </div>
+    </div>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/Users/ayoub/FlyAir/flyair/src/Controller/UtilisateurController.php</code></li>
-        <li>Your template at <code>C:/Users/ayoub/FlyAir/flyair/templates/utilisateur/index.html.twig</code></li>
-    </ul>
+    <!-- Section droite -->
+    <div class="right-section">
+        <h2>SE CONNECTER À <br>myFLY-AIR</h2>
+        <form>
+            <div class="form-group">
+                <label for="email">Adresse e-mail</label>
+                <input type="email" id="email" name="email" placeholder="email@email.com">
+            </div>
+            <div class="form-group">
+                <label for="password">Mot de passe</label>
+                <input type="password" id="password" name="password" placeholder="Mot de passe">
+                <a href="#">MDP oublié ?</a>
+            </div>
+            <button type="submit" class="btn">VALIDER</button>
+        </form>
+    </div>
 </div>
 {% endblock %}

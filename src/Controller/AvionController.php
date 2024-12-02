@@ -1,35 +1,20 @@
 <?php
-// src/Controller/AvionController.php
-
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Avion;
 use App\Repository\AvionRepository;
 
 class AvionController extends AbstractController
 {
-    #[Route('/avion', name: 'app_avion')]
-    public function index(): Response
-    {
-
-         // Créer une nouvelle instance d'Avion
-         $avion = new Avion();
-         // Utiliser le repository pour insérer l'avion
-         $avionRepository->save($avion);
-        return $this->render('avion/index.html.twig', [
-            'controller_name' => 'AvionController',
-        ]);
-    }
-
     #[Route('/avion/insert', name: 'app_avion_insert', methods: ['GET', 'POST'])]
     public function insert(Request $request, AvionRepository $avionRepository): Response
     {
-        // Si le formulaire est soumis
         if ($request->isMethod('POST')) {
+            // Récupérer les données du formulaire
             $modele = $request->request->get('modele');
             $nbPlaces = $request->request->get('nbPlaces');
 
@@ -38,18 +23,18 @@ class AvionController extends AbstractController
             $avion->setModele($modele);
             $avion->setNbPlaces($nbPlaces);
 
-            // Utiliser le repository pour insérer l'avion
-            $avionRepository->insertAvion($avion);
+            // Utiliser le repository pour sauvegarder l'avion
+            $avionRepository->save($avion);  // Le repository appelle EntityManager pour persister l'entité
 
-            // Renvoyer une réponse avec un message de confirmation
-            return $this->render('avion/insert.html.twig', [ // Mise à jour du chemin
+            // Message de confirmation
+            return $this->render('avion/insert.html.twig', [
                 'controller_name' => 'AvionController',
                 'insertion' => 'L\'avion a été inséré avec succès.'
             ]);
         }
 
-        // Afficher le formulaire d'insertion
-        return $this->render('avion/insert.html.twig', [ // Mise à jour du chemin
+        // Si aucune donnée n'est soumise, afficher le formulaire
+        return $this->render('avion/insert.html.twig', [
             'controller_name' => 'AvionController',
         ]);
     }
