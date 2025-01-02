@@ -22,11 +22,11 @@ class Avion
     private ?int $nbPlaces = null;
 
     #[ORM\OneToMany(mappedBy: 'avion', targetEntity: Vol::class)]
-    private Collection $vols; // Relation avec Vol
+    private Collection $vols; 
 
     public function __construct()
     {
-        $this->vols = new ArrayCollection(); // Initialisation de la collection de vols
+        $this->vols = new ArrayCollection(); 
     }
 
     public function getId(): ?int
@@ -54,8 +54,6 @@ class Avion
     public function setNbPlaces(int $nbPlaces): static
     {
         $this->nbPlaces = $nbPlaces;
-
         return $this;
     }
-
 }

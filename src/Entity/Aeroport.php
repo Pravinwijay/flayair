@@ -20,18 +20,18 @@ class Aeroport
 
     #[ORM\ManyToOne(targetEntity: Ville::class)]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Ville $ville = null; // Relation avec Ville
+    private ?Ville $ville = null; 
 
     #[ORM\OneToMany(mappedBy: 'aeroportDepart', targetEntity: Vol::class)]
-    private Collection $volsDepart; // Relation pour les vols de départ
+    private Collection $volsDepart; 
 
     #[ORM\OneToMany(mappedBy: 'aeroportArrive', targetEntity: Vol::class)]
-    private Collection $volsArrive; // Relation pour les vols d'arrivée
+    private Collection $volsArrive; 
 
     public function __construct()
     {
-        $this->volsDepart = new ArrayCollection(); // Initialisation de la collection de vols de départ
-        $this->volsArrive = new ArrayCollection(); // Initialisation de la collection de vols d'arrivée
+        $this->volsDepart = new ArrayCollection(); 
+        $this->volsArrive = new ArrayCollection(); 
     }
 
     public function getId(): ?int
@@ -70,6 +70,4 @@ class Aeroport
     {
         return $this->volsDepart;
     }
-
-   
 }

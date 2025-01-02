@@ -1,0 +1,79 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.image-container {
+    position: relative;
+    width: 100%;
+    height: 30%; 
+    background: url('../../images/inside_airport.jpg') no-repeat center center;
+    background-size: cover;
+}
+
+.content {
+    flex: 1;  
+    display: flex;
+    flex-direction: row;
+    padding: 5rem 10rem;
+    background-color: white;
+    box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.1);
+    margin-top: -150px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    top: 90%; 
+    left: 0;
+    width: 100%;
+    padding: 0;
+    z-index: 2;
+}
+
+.action-button {
+    background-color: #fca004;
+    color: white;
+    border: white 1px solid;
+    border-radius: 4px;
+    padding: 12px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 22%;
+    text-align: center;
+}
+
+.action-button:hover {
+    background-color: white;
+    color : #fca004;
+    border: #fca004 1px solid;
+}
+
+.content {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    padding: 10rem;
+    background-color: white;
+    box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.1);
+    margin-top: -200px;
+}
+
+.text {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 600px;
+    margin-right: 2rem;
+}
+
