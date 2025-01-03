@@ -1,0 +1,47 @@
+.image-container {
+    background: url('../../images/maldives.jpg');
+    background-position: center !important;
+    background-size: cover;
+}
+
+.action-button {
+    background-color: #259ae2 !important;
+    color: white;
+    border: white 1px solid !important;
+    border-radius: 4px;
+    padding: 12px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 22%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    gap: 16px; 
+}
+
+.action-button:hover {
+    background-color: white !important;
+    color: #259ae2 !important;
+    border: #259ae2 1px solid !important;
+}
+
+.dropdown-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    padding: 20px;
+    border: 2px solid #259ae2;
+    border-radius: 8px;
+    background-color: white;
+    width: 70%;
+    margin: 80px auto;
+}
+
+.dropdown {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin-right: 10px;
+}
+

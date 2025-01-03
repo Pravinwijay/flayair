@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Fly Air{% endblock %}</title>
+    <link rel="stylesheet" href="{{ asset('styles/app.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    {% block stylesheets %}{% endblock %}
+</head>
+<body>
+    <div class="container">
+        <div class="image-container">
+            <div class="button-container">
+                <button class="action-button">
+                    <i class="fa-solid fa-plane-departure"></i>
+                    <a href="{{ path('reservation') }}">Réserver</a>
+                </button>
+                <button class="action-button">
+                    <i class="fa-solid fa-ticket-simple"></i>
+                    <a href="{{ path('mes-reservations') }}">Mes réservations</a>
+                </button>
+                <button class="action-button">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <a href="{{ path('app_vol') }}">Nos destinations</a>
+                </button>
+                <button class="action-button">
+                    <i class="fa-solid fa-user"></i>
+                    Mon compte
+                </button>
+            </div>
+        </div>
+        <div class="content">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+    {% block javascripts %}{% endblock %}
+</body>
+{% for message in app.flashes('error') %}
+    <div class="alert alert-danger">
+        {{ message }}
+    </div>
+{% endfor %}
+</html>

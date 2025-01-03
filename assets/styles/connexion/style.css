@@ -28,6 +28,19 @@ body {
     margin-top: -200px;
 }
 
+.text h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.text h1 span {
+    color: #f35d4f;
+}
+
+.text p {
+    margin: 10px 0;
+}
+
 .text {
     flex: 2;
     display: flex;

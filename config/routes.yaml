@@ -3,3 +3,19 @@ controllers:
         path: ../src/Controller/
         namespace: App\Controller
     type: attribute
+
+reservation:
+    path: /reservation
+    controller: App\Controller\PageController::reservation
+
+mes_reservations:
+    path: /mes-reservations
+    controller: App\Controller\PageController::reservation
+
+# nos_destinations:
+#     path: /vol
+#     controller: App\Controller\PageController::nosDestinations
+
+# mon_compte:
+#     path: /mon-compte
+#     controller: App\Controller\PageController::monCompte

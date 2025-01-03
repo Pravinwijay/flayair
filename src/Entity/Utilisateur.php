@@ -3,7 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\UtilisateurRepository;
-use App\Entity\CategUtilisateur;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -28,13 +27,17 @@ class Utilisateur
     #[ORM\Column(length: 255)]
     private ?string $prenom = null;
 
-    
-    #[ORM\ManyToOne(targetEntity:CategUtilisateur::class)]
-    #[ORM\JoinColumn(nullable:false)]
-    private ?categUtilisateur $categUtilisateur = null;
+    #[ORM\ManyToOne(targetEntity: CategUtilisateur::class)]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?CategUtilisateur $categUtilisateur = null;
 
     #[ORM\OneToMany(mappedBy: 'utilisateur', targetEntity: Reservation::class, orphanRemoval: true)]
     private Collection $reservations;
+
+    public function __construct()
+    {
+        $this->reservations = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {

@@ -18,7 +18,7 @@ class Fonctionnalite
 
     #[ORM\ManyToOne(targetEntity: CategUtilisateur::class)]
     #[ORM\JoinColumn(nullable: false)]
-    private ?CategUtilisateur $categUtilisateur = null; // Remplacement par un objet
+    private ?CategUtilisateur $categUtilisateur = null;
 
     public function getId(): ?int
     {
