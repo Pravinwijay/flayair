@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\VolRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -11,10 +13,10 @@ class Vol
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column]
+    #[ORM\Column(type: 'integer')]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(type: 'string', length: 255)]
     private ?string $numVol = null;
 
     #[ORM\Column(type: Types::TIME_MUTABLE)]
@@ -26,10 +28,10 @@ class Vol
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $heureArrive = null;
 
-    #[ORM\Column]
+    #[ORM\Column(type: 'integer')]
     private ?int $nbPassagers = null;
 
-    #[ORM\Column(type: Types::FLOAT)]
+    #[ORM\Column(type: 'float')]
     private ?float $prixVol = null;
 
     #[ORM\ManyToOne(targetEntity: Avion::class)]
@@ -43,6 +45,14 @@ class Vol
     #[ORM\ManyToOne(targetEntity: Aeroport::class)]
     #[ORM\JoinColumn(nullable: false)]
     private ?Aeroport $aeroportArrive = null;
+
+    #[ORM\OneToMany(mappedBy: 'vol', targetEntity: Reservation::class)]
+    private Collection $reservations;
+
+    public function __construct()
+    {
+        $this->reservations = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -145,6 +155,28 @@ class Vol
     public function setAeroportArrive(?Aeroport $aeroportArrive): static
     {
         $this->aeroportArrive = $aeroportArrive;
+        return $this;
+    }
+
+    public function getReservations(): Collection
+    {
+        return $this->reservations;
+    }
+
+    public function addReservation(Reservation $reservation): static
+    {
+        if (!$this->reservations->contains($reservation)) {
+            $this->reservations[] = $reservation;
+            $reservation->setVol($this);
+        }
+        return $this;
+    }
+
+    public function removeReservation(Reservation $reservation): static
+    {
+        if ($this->reservations->contains($reservation)) {
+            $this->reservations->removeElement($reservation);
+        }
         return $this;
     }
 }

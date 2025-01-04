@@ -1,0 +1,67 @@
+.image-container {
+    background: url('../../images/inside_airport.jpg');
+}
+
+/* Dropdown container (specific to reservation page) */
+.dropdown-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    padding: 20px;
+    border: 2px solid #fca004;
+    border-radius: 8px;
+    background-color: white;
+    width: 70%;
+    margin: 80px auto;
+}
+
+.dropdown {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin-right: 10px;
+}
+
+.dropdown label {
+    font-size: 14px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.dropdown select {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background-color: rgb(203, 203, 203);
+    width: 100%;
+}
+
+.dropdown select:focus {
+    outline: none;
+    border-color: #fca004;
+}
+
+.dropdown:last-child {
+    margin-right: 0;
+}
+
+.dropdown-button {
+    align-self: center;
+    background-color: #fca004;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 12px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100px;
+    margin-top: 20px;
+}
+
+.dropdown-button:hover {
+    background-color: white;
+    color: #fca004;
+    border: #fca004 1px solid;
+}
+

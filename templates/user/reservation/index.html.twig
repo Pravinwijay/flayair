@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Réserver{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('styles/reservation/style.css') }}">
+	<link rel="stylesheet" href="{{ asset('styles/app.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="dropdown-container">
+    <div class="dropdown">
+        <label for="from">De</label>
+        <select id="from">
+            {% for aeroport in aeroports %}
+                <option value="{{ aeroport.id }}">{{ aeroport.aeroport }} - {{ aeroport.ville }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="dropdown">
+        <label for="to">À</label>
+        <select id="to">
+            {% for aeroport in aeroports %}
+                <option value="{{ aeroport.id }}">{{ aeroport.aeroport }} - {{ aeroport.ville }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <button class="dropdown-button">Valider</button>
+</div>
+{% endblock %}

@@ -1,17 +1,44 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
-        {% block stylesheets %}
-        {% endblock %}
-
-        {% block javascripts %}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Fly Air{% endblock %}</title>
+    <link rel="stylesheet" href="{{ asset('styles/app.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    {% block stylesheets %}{% endblock %}
+</head>
+<body>
+    <div class="container">
+        <div class="image-container">
+            <div class="button-container">
+                <button class="action-button">
+                    <i class="fa-solid fa-plane-departure"></i>
+                    <a href="{{ path('reservation') }}">Réserver</a>
+                </button>
+                <button class="action-button">
+                    <i class="fa-solid fa-ticket-simple"></i>
+                    <a href="{{ path('mes-reservations') }}">Mes réservations</a>
+                </button>
+                <button class="action-button">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <a href="{{ path('app_vol') }}">Nos destinations</a>
+                </button>
+                <button class="action-button">
+                    <i class="fa-solid fa-user"></i>
+                    Mon compte
+                </button>
+            </div>
+        </div>
+        <div class="content">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+    {% block javascripts %}{% endblock %}
+</body>
+{% for message in app.flashes('error') %}
+    <div class="alert alert-danger">
+        {{ message }}
+    </div>
+{% endfor %}
 </html>

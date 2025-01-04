@@ -13,7 +13,7 @@ class FonctCateg
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\ManyToOne(targetEntity: CategUtilisateur::class)]
+    #[ORM\ManyToOne(targetEntity: CategUtilisateur::class, inversedBy: 'fonctions')]
     #[ORM\JoinColumn(nullable: false)]
     private ?CategUtilisateur $categ = null; // Relation vers CategUtilisateur
 

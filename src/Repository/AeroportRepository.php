@@ -6,9 +6,6 @@ use App\Entity\Aeroport;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
-/**
- * @extends ServiceEntityRepository<Aeroport>
- */
 class AeroportRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
@@ -16,28 +13,13 @@ class AeroportRepository extends ServiceEntityRepository
         parent::__construct($registry, Aeroport::class);
     }
 
-    //    /**
-    //     * @return Aeroport[] Returns an array of Aeroport objects
-    //     */
-    //    public function findByExampleField($value): array
-    //    {
-    //        return $this->createQueryBuilder('a')
-    //            ->andWhere('a.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->orderBy('a.id', 'ASC')
-    //            ->setMaxResults(10)
-    //            ->getQuery()
-    //            ->getResult()
-    //        ;
-    //    }
-
-    //    public function findOneBySomeField($value): ?Aeroport
-    //    {
-    //        return $this->createQueryBuilder('a')
-    //            ->andWhere('a.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->getQuery()
-    //            ->getOneOrNullResult()
-    //        ;
-    //    }
+    public function findAllWithVille()
+    {
+        return $this->createQueryBuilder('a')
+            ->select('a.id, a.nomAeroport AS aeroport, v.nom AS ville')
+            ->join('a.ville', 'v')
+            ->orderBy('v.nom', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
 }

@@ -18,8 +18,9 @@ class CategUtilisateur
     #[ORM\Column(length: 255)]
     private ?string $libelle = null;
 
-    #[ORM\OneToMany(mappedBy: 'categ', targetEntity: FonctCateg::class, orphanRemoval: true)]
-    private Collection $fonctions; // Relation avec FonctCateg
+    #[ORM\OneToMany(mappedBy: 'categ', targetEntity: FonctCateg::class)]
+    private Collection $fonctions;
+
 
     public function __construct()
     {
