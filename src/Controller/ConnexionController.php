@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class ConnexionController extends AbstractController
 {
-    #[Route('/connexion', name: 'app_connexion')]
+    #[Route('/', name: 'app_connexion')]
     public function index(
         Request $request,
         UtilisateurRepository $utilisateurRepository,
