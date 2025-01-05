@@ -1,6 +1,6 @@
-{% extends 'base.html.twig' %}
 
-{% block title %}Admin - HomePage{% endblock %}
+
+
 
 {% block body %}
 <style>
@@ -95,7 +95,7 @@
         <div class="card-header">AÉROPORT</div>
         <div class="card-content">
             <a href="#">CONSULTER</a>
-            <a href="#">AJOUTER</a>
+            <a href="{{ path('app_admin_aeroport_new') }}">AJOUTER</a>
             <a href="#">MODIFIER</a>
             <a href="#">SUPPRIMER</a>
         </div>
@@ -103,8 +103,19 @@
     <div class="card">
         <div class="card-header">VILLE</div>
         <div class="card-content">
+            <a href="{{ path('app_admin_ville_index') }}">CONSULTER</a>
+            <a href="{{ path('app_admin_ville_new') }}">AJOUTER</a>
+           
+
+
+            <a href="#">SUPPRIMER</a>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">RESERVATION</div>
+        <div class="card-content">
             <a href="#">CONSULTER</a>
-            <a href="#">AJOUTER</a>
+            <a href="{{ path('app_admin_reservation_new') }}">AJOUTER</a>
             <a href="#">MODIFIER</a>
             <a href="#">SUPPRIMER</a>
         </div>
@@ -113,7 +124,7 @@
         <div class="card-header">AVION</div>
         <div class="card-content">
             <a href="#">CONSULTER</a>
-            <a href="{{ path('app_avion_insert') }}">AJOUTER</a>
+            <a href="{{ path('app_admin_avion_new') }}">AJOUTER</a>
             <a href="#">MODIFIER</a>
             <a href="#">SUPPRIMER</a>
         </div>
@@ -122,7 +133,7 @@
         <div class="card-header">VOL</div>
         <div class="card-content">
             <a href="#">CONSULTER</a>
-            <a href="#">AJOUTER</a>
+            <a href="{{ path('app_admin_vol_new') }}">AJOUTER</a>
             <a href="#">MODIFIER</a>
             <a href="#">SUPPRIMER</a>
         </div>
@@ -131,7 +142,7 @@
         <div class="card-header">UTILISATEUR</div>
         <div class="card-content">
             <a href="#">CONSULTER</a>
-            <a href="#">AJOUTER</a>
+            <a href="{{ path('app_admin_utilisateur_new') }}">AJOUTER</a>
             <a href="#">MODIFIER</a>
             <a href="#">SUPPRIMER</a>
         </div>

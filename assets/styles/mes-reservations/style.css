@@ -1,9 +1,16 @@
+/* Container de l'image avec fond */
 .image-container {
     background: url('../../images/maldives.jpg');
     background-position: center !important;
     background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center; /* Assurez-vous que le texte dans cet élément est centré */
+    height: 100vh; /* Ajouter une hauteur pour l'image de fond (facultatif) */
 }
 
+/* Style pour le bouton d'action */
 .action-button {
     background-color: #259ae2 !important;
     color: white;
@@ -17,18 +24,23 @@
     display: flex;
     justify-content: center;
     align-items: center; 
-    gap: 16px; 
+    gap: 16px;
+    margin: 0 auto; /* Centrer le bouton horizontalement */
 }
 
+/* Effet au survol du bouton d'action */
 .action-button:hover {
     background-color: white !important;
     color: #259ae2 !important;
     border: #259ae2 1px solid !important;
 }
 
+/* Container pour les éléments déroulants */
 .dropdown-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: center; /* Centrer les éléments enfants */
+    flex-direction: column;
+    text-align: center; /* Centrer le texte à l'intérieur */
     margin-top: 20px;
     padding: 20px;
     border: 2px solid #259ae2;
@@ -38,10 +50,11 @@
     margin: 80px auto;
 }
 
+/* Style pour chaque dropdown */
 .dropdown {
     display: flex;
     flex-direction: column;
     flex: 1;
     margin-right: 10px;
+    text-align: center; /* Centrer le texte à l'intérieur de chaque dropdown */
 }
-

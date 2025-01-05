@@ -2,26 +2,25 @@
 
 namespace App\Form;
 
-use App\Entity\Reservation;
+use App\Entity\CategUtilisateur;
 use App\Entity\Utilisateur;
-use App\Entity\Vol;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ReservationType extends AbstractType
+class UtilisateurType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('utilisateur', EntityType::class, [
-                'class' => Utilisateur::class,
-                'choice_label' => 'nom',
-            ])
-            ->add('vol', EntityType::class, [
-                'class' => Vol::class,
-                'choice_label' => 'numVol',
+            ->add('mail')
+            ->add('mdp')
+            ->add('nom')
+            ->add('prenom')
+            ->add('categUtilisateur', EntityType::class, [
+                'class' => CategUtilisateur::class,
+                'choice_label' => 'libelle',
             ])
         ;
     }
@@ -29,7 +28,7 @@ class ReservationType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Reservation::class,
+            'data_class' => Utilisateur::class,
         ]);
     }
 }

@@ -1,13 +1,47 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Réserver{% endblock %}
+{% block title %}Mes réservations{% endblock %}
 
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('styles/mes-reservations/style.css') }}">
-	<link rel="stylesheet" href="{{ asset('styles/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('styles/app.css') }}">
 {% endblock %}
 
 {% block content %}
 <div class="dropdown-container">
+    <h1>Mes réservations</h1>
+
+    {% if reservations is not empty %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Numéro du vol</th>
+                    <th>Départ</th>
+                    <th>Arrivée</th>
+                    <th>Prix</th>
+                    <th>Nombre de passagers</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for reservation in reservations %}
+                    <tr>
+                        <td>{{ reservation.vol.numVol }}</td>
+                        <td>
+                            {{ reservation.vol.heureDepart|date('d/m/Y H:i') }} - 
+                            {{ reservation.vol.aeroportDepart.nomAeroport }}
+                        </td>
+                        <td>
+                            {{ reservation.vol.heureArrive|date('d/m/Y H:i') }} - 
+                            {{ reservation.vol.aeroportArrive.nomAeroport }}
+                        </td>
+                        <td>{{ reservation.vol.prixVol }} €</td>
+                        <td>{{ reservation.vol.nbPassagers }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Vous n'avez aucune réservation.</p>
+    {% endif %}
 </div>
 {% endblock %}

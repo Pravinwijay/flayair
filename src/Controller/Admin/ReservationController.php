@@ -17,7 +17,7 @@ class ReservationController extends AbstractController
     #[Route('', name: 'app_admin_reservation', methods: ['GET'])]
     public function index(): Response
     {
-        return $this->render('reservation/index.html.twig', [
+        return $this->render('admin/reservation/index.html.twig', [
             'controller_name' => 'reservationController',
         ]);
     }
@@ -37,7 +37,7 @@ class ReservationController extends AbstractController
             return $this->redirectToRoute('app_admin_reservation');
         }
 
-        return $this->render('reservation/new.html.twig', [
+        return $this->render('admin/reservation/new.html.twig', [
             'form' => $form,
         ]);
     }

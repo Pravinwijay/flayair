@@ -17,7 +17,7 @@ class AeroportController extends AbstractController
     #[Route('', name: 'app_admin_aeroport', methods: ['GET'])]
     public function index(): Response
     {
-        return $this->render('aeroport/index.html.twig', [
+        return $this->render('admin/aeroport/index.html.twig', [
             'controller_name' => 'AeroportController',
         ]);
     }
@@ -37,7 +37,7 @@ class AeroportController extends AbstractController
             return $this->redirectToRoute('app_admin_aeroport');
         }
 
-        return $this->render('aeroport/new.html.twig', [
+        return $this->render('admin/aeroport/new.html.twig', [
             'form' => $form,
         ]);
     }

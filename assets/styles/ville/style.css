@@ -1,0 +1,77 @@
+/* Conteneur de tableau */
+.table-container {
+    width: 100%;
+    max-width: 1200px; /* Largeur maximale */
+    margin: 0 auto; /* Centrer horizontalement */
+    padding: 20px;
+}
+
+/* Table centrée */
+table {
+    width: 100%;
+    margin: 0 auto; /* Centrer la table */
+    border-collapse: collapse;
+    text-align: center; /* Centrer le texte des cellules */
+}
+
+/* Style des cellules de la table */
+th, td {
+    padding: 12px;
+    border: 1px solid #ddd; /* Bordure légère pour chaque cellule */
+}
+.btn-custom {
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 80%; /* Occupe toute la largeur de la cellule */
+}
+/* Style pour le bouton "Modifier" */
+.btn-warning {
+    background-color: #f0ad4e;
+    border-color: #f39c12;
+    color: white;
+}
+
+.btn-warning:hover {
+    background-color: #f39c12;
+    border-color: #e67e22;
+    color: white;
+    transform: scale(1.05);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Optionnel: Si vous voulez un effet de focus */
+.btn-warning:focus {
+    outline: none; /* Enlever le contour par défaut */
+    box-shadow: 0 0 5px rgba(243, 156, 18, 0.7); /* Ajouter une légère lueur autour du bouton */
+}
+
+/* Centrer le bouton "Modifier" */
+td .btn-warning {
+    margin: 0 auto; /* Centrer le bouton dans la cellule */
+    display: block; /* Faire du bouton un élément bloc pour qu'il se centre */
+}
+a{
+    all: unset;
+}
+
+/* Style pour le bouton "Supprimer" */
+.btn-danger {
+    background-color: rgb(240, 78, 78);
+    border-color: rgb(243, 18, 18);
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: rgb(243, 18, 18);
+    border-color: rgb(204, 0, 0);
+    color: white;
+    transform: scale(1.05);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}

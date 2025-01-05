@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Entity;
 
 use App\Repository\VolRepository;
@@ -38,11 +37,11 @@ class Vol
     #[ORM\JoinColumn(nullable: false)]
     private ?Avion $avion = null;
 
-    #[ORM\ManyToOne(targetEntity: Aeroport::class)]
+    #[ORM\ManyToOne(targetEntity: Aeroport::class, inversedBy: 'volsDepart')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Aeroport $aeroportDepart = null;
 
-    #[ORM\ManyToOne(targetEntity: Aeroport::class)]
+    #[ORM\ManyToOne(targetEntity: Aeroport::class, inversedBy: 'volsArrive')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Aeroport $aeroportArrive = null;
 
@@ -54,6 +53,7 @@ class Vol
         $this->reservations = new ArrayCollection();
     }
 
+    // Les getters et setters restent identiques
     public function getId(): ?int
     {
         return $this->id;

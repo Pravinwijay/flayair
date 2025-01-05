@@ -17,7 +17,7 @@ class AvionController extends AbstractController
     #[Route('', name: 'app_admin_avion', methods: ['GET'])]
     public function index(): Response
     {
-        return $this->render('avion/index.html.twig', [
+        return $this->render('admin/avion/index.html.twig', [
             'controller_name' => 'avionController',
         ]);
     }
@@ -37,7 +37,7 @@ class AvionController extends AbstractController
             return $this->redirectToRoute('app_admin_avion');
         }
 
-        return $this->render('avion/new.html.twig', [
+        return $this->render('admin/avion/new.html.twig', [
             'form' => $form,
         ]);
     }

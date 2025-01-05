@@ -11,22 +11,25 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 
 #[Route('/admin/vol')]
-
 class VolController extends AbstractController
 {
     #[Route('', name: 'app_admin_vol', methods: ['GET'])]
-    public function index(): Response
-    {
-        return $this->render('vol/index.html.twig', [
-            'controller_name' => 'volController',
-        ]);
-    }
+    public function index(EntityManagerInterface $manager): Response
+{
+    // Récupérer tous les vols de la base de données
+    $vols = $manager->getRepository(Vol::class)->findAll();
+
+    // Rendre la vue avec les vols
+    return $this->render('admin/vol/index.html.twig', [
+        'vols' => $vols,
+    ]);
+}
 
     #[Route('/new', name: 'app_admin_vol_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $manager): Response
     {
-        $vol = new vol();
-        $form = $this->createForm(volType::class, $vol);
+        $vol = new Vol();
+        $form = $this->createForm(VolType::class, $vol);
 
         $form->handleRequest($request);
 
@@ -37,8 +40,9 @@ class VolController extends AbstractController
             return $this->redirectToRoute('app_admin_vol');
         }
 
-        return $this->render('vol/new.html.twig', [
+        return $this->render('admin/vol/new.html.twig', [
             'form' => $form,
         ]);
     }
 }
+

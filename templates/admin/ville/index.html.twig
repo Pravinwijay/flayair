@@ -1,0 +1,57 @@
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('styles/ville/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('styles/app.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="dropdown-container">
+    <div class="table-container">
+        <a href="{{ path('app_admin_accueil') }}" class="btn btn-secondary">Accueil</a>
+        <h1 class="table-title">Villes</h1>
+        <table class="table striped-table">
+            <thead>
+                <tr>
+                    <th>
+                        <i class="fa-solid fa-city icon-city"></i> Nom de la Ville
+                    </th>
+                    <th>
+                        <i class="fa-solid fa-postcard icon-postcode"></i> Code Postal
+                    </th>
+                    <th>
+                        <i class="fa-solid fa-flag icon-country"></i> Pays
+                    </th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for ville in villes %}
+                <tr>
+                    <td>
+                        {{ ville.nom }}
+                    </td>
+                    <td>
+                        {{ ville.cp }}
+                    </td>
+                    <td>
+                        {{ ville.pays }}
+                    </td>
+                  <td>
+    <a href="{{ path('app_admin_ville_edit', { 'id': ville.id }) }}" class="btn btn-warning btn-sm btn-custom">
+        Modifier
+    </a>
+
+    <form action="{{ path('app_admin_ville_delete', { 'id': ville.id }) }}" method="POST" style="display: inline;">
+        <button type="submit" class="btn btn-danger btn-sm btn-custom">
+            Supprimer
+        </button>
+    </form>
+</td>
+
+
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
