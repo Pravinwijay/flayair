@@ -6,28 +6,32 @@
     }
 
     .admin-header {
-       
-        height: 200px;
         display: flex;
         align-items: center;
         justify-content: center;
         color: orange;
         font-size: 24px;
-        font-weight: bold;
-        
+        font-weight: bold; 
+        margin-top:-20px;
+    }
+
+    .admin-header .title {
+        border: #333 1px solid; 
+        border-radius: 5px 5px 5px 5px !important; 
+        padding: 5px;            
+        background-color: #f8f9fa;
     }
 
     .container {
-        max-width: 1200px;
         margin: 20px auto;
         padding: 20px;
         display: flex;
         justify-content: space-between;
-        flex-wrap: wrap; /* Adapte les blocs si l'écran est trop petit */
+        flex-wrap: wrap; 
     }
 
     .card {
-        flex: 1 0 18%; /* Définit une largeur minimale pour les blocs */
+        flex: 1 0 18%; 
         margin: 10px;
         background: white;
         border: 2px solid orange;
@@ -64,15 +68,16 @@
         color: orange;
     }
     .banniere {
-    width: 100%; /* La div occupe toute la largeur de l'écran */
-    overflow: hidden; /* Pour éviter les débordements si l'image est plus grande */
-    margin: 0; /* Supprime les marges par défaut */
+    width: 100%; 
+    overflow: hidden; 
+    margin: 0; 
     padding: 0;
 }
 
 .banniere img {
-    width: 100%; /* L'image occupe toute la largeur */
-    height: 300px; /* Hauteur fixe */
-    object-fit: cover; /* L'image est coupée si nécessaire pour conserver ses proportions */
-    display: block; /* Évite les marges blanches */
+    width: 100%; 
+    height: 300px; 
+    object-fit: cover;
+    display: block; 
+    
 }

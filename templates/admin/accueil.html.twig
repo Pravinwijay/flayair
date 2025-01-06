@@ -1,28 +1,18 @@
-
-
-
-
 {% block body %}
-
-
-
-
 
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('styles/accueilAdmin/style.css') }}">
     
 {% endblock %}
 <div class="banniere">
-    <img src="{{ asset('../assets/images/banniereAccueilAdmin.jpg') }}" alt="Bannière Administration">
+    <img src="{{ asset('../assets/images/inside.jpg') }}" alt="Bannière Administration">
 </div>
 <div class="admin-header">
-    BIENVENUE DANS L'ADMINISTRATION
-
-
+    <span class="title">BIENVENUE DANS L'ADMINISTRATION</span>
 </div>
 <div class="container">
     <div class="card">
-        <div class="card-header">AÉROPORT</div>
+        <div class="card-header">Gestion des aéroports</div>
         <div class="card-content">
             <a href="{{ path('app_admin_aeroport') }}">CONSULTER | MODIFIER | SUPPRIMER</a>
             <a href="{{ path('app_admin_aeroport_new') }}">AJOUTER</a>
@@ -30,21 +20,21 @@
         </div>
     </div>
     <div class="card">
-        <div class="card-header">VILLE</div>
+        <div class="card-header">Gestion de nos destinations</div>
         <div class="card-content">
             <a href="{{ path('app_admin_ville_index') }}">CONSULTER | MODIFIER | SUPPRIMER</a>
             <a href="{{ path('app_admin_ville_new') }}">AJOUTER</a>
         </div>
     </div>
     <div class="card">
-        <div class="card-header">RESERVATION</div>
+        <div class="card-header">Gestion des réservations</div>
         <div class="card-content">
             <a href="{{ path('app_admin_reservation') }}">CONSULTER | MODIFIER | SUPPRIMER</a>
             <a href="{{ path('app_admin_reservation_new') }}">AJOUTER</a>
         </div>
     </div>
     <div class="card">
-        <div class="card-header">AVION</div>
+        <div class="card-header">Gestion des avions</div>
         <div class="card-content">
              <a href="{{ path('app_admin_avion') }}">CONSULTER | MODIFIER | SUPPRIMER</a>
             <a href="{{ path('app_admin_avion_new') }}">AJOUTER</a>
@@ -52,14 +42,14 @@
         </div>
     </div>
     <div class="card">
-        <div class="card-header">VOL</div>
+        <div class="card-header">Gestion des vols</div>
         <div class="card-content">
             <a href="{{ path('app_admin_vol') }}">CONSULTER | MODIFIER | SUPPRIMER</a>
             <a href="{{ path('app_admin_vol_new') }}">AJOUTER</a>
         </div>
     </div>
     <div class="card">
-        <div class="card-header">UTILISATEUR</div>
+        <div class="card-header">Gestion des utilisateurs</div>
         <div class="card-content">
             <a href="{{ path('app_admin_utilisateur') }}">CONSULTER | MODIFIER | SUPPRIMER</a>
             <a href="{{ path('app_admin_utilisateur_new') }}">AJOUTER</a>
