@@ -4,27 +4,104 @@
 
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('styles/reservation/style.css') }}">
-	<link rel="stylesheet" href="{{ asset('styles/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('styles/app.css') }}">
 {% endblock %}
 
 {% block content %}
-<div class="dropdown-container">
-    <div class="dropdown">
-        <label for="from">De</label>
-        <select id="from">
-            {% for aeroport in aeroports %}
-                <option value="{{ aeroport.id }}">{{ aeroport.aeroport }} - {{ aeroport.ville }}</option>
-            {% endfor %}
-        </select>
+<form method="POST" action="{{ path('reservation') }}">
+    <div class="dropdown-container">
+        <div class="dropdown">
+            <label for="from">De</label>
+            <select id="from" name="from">
+                {% for aeroport in aeroports %}
+                    <option value="{{ aeroport.id }}">{{ aeroport.aeroport }} - {{ aeroport.ville }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="dropdown">
+            <label for="to">À</label>
+            <select id="to" name="to">
+                {% for aeroport in aeroports %}
+                    <option value="{{ aeroport.id }}">{{ aeroport.aeroport }} - {{ aeroport.ville }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button class="dropdown-button" type="submit">Valider</button>
     </div>
-    <div class="dropdown">
-        <label for="to">À</label>
-        <select id="to">
-            {% for aeroport in aeroports %}
-                <option value="{{ aeroport.id }}">{{ aeroport.aeroport }} - {{ aeroport.ville }}</option>
-            {% endfor %}
-        </select>
+</form>
+
+{% if vols is not empty %}
+    <div class="results-container">
+        <h2>Résultats pour {{ fromAirport.ville.nom }} - {{ toAirport.ville.nom }}</h2>
+        <table class="results-table">
+            <thead>
+                <tr>
+                    <th>Compagnie</th>
+                    <th>Date de départ</th>
+                    <th>Date d'arrivée</th>
+                    <th>Durée</th>
+                    <th>Prix</th>
+                    <th>Convaincu ?</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for vol in vols %}
+                    <tr>
+                        <td>FlyAir</td>
+                        <td>{{ vol.heureDepart|date('d/m/Y') }} à {{ vol.heureDepart|date('H:i') }}</td>
+                        <td>{{ vol.heureArrive|date('d/m/Y') }} à {{ vol.heureArrive|date('H:i') }}</td>
+                        <td>{{ vol.duree|date('H:i') }}</td>
+                        <td>{{ vol.prixVol }} €</td>
+                        <td>
+                            <form onsubmit="return false;">
+                                <input type="hidden" name="vol" value="{{ vol.id }}">
+                                <button class="reservation-button" type="button" onclick="openModal({{ vol.id }})">Réserver</button>
+                            </form>
+                        </td>
+
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
-    <button class="dropdown-button">Valider</button>
-</div>
+{% else %}
+    {% if app.request.method == 'POST' %}
+        <p class="no-results">Aucun vol trouvé pour ces critères.</p>
+    {% endif %}
+{% endif %}
+<div id="modal" class="modal">
+        <div class="modal-content">
+            <p>Voulez-vous confirmer la réservation de ce vol ?</p>
+            <div class="modal-buttons">
+                <form method="POST" action="{{ path('reservation_confirmer') }}">
+                    <input type="hidden" id="vol-id" name="volId" value="">
+                    <button type="submit" class="confirm-button">Confirmer</button>
+                </form>
+                <button type="button" class="cancel-button" onclick="closeModal()">Annuler</button>
+            </div>
+        </div>
+    </div>
+
+    {% block javascripts %}
+    <script>
+        function openModal(volId) {
+            const modal = document.getElementById('modal');
+            const input = document.getElementById('vol-id');
+            input.value = volId; 
+            modal.style.display = 'block'; 
+        }
+        function closeModal() {
+            const modal = document.getElementById('modal');
+            modal.style.display = 'none'; 
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('modal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
+{% endblock %}
+
 {% endblock %}

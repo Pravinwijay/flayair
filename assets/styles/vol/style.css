@@ -4,6 +4,10 @@
     background-size: cover;
 }
 
+.container{
+    display: block !important;
+}
+
 .dropdown-container {
     display: flex;
     justify-content: space-between;

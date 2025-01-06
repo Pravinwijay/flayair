@@ -8,11 +8,11 @@
 {% endblock %}
 
 {% block content %}
-<div class="dropdown-container">
-    <h1>Mes réservations</h1>
+<div class="results-container">
+    <h2>Mes réservations</h2>
 
     {% if reservations is not empty %}
-        <table class="table">
+        <table class="results-table">
             <thead>
                 <tr>
                     <th>Numéro du vol</th>
@@ -20,28 +20,36 @@
                     <th>Arrivée</th>
                     <th>Prix</th>
                     <th>Nombre de passagers</th>
+                    <th>Actions</th>
+                    <th>Annuler</th>
                 </tr>
             </thead>
             <tbody>
                 {% for reservation in reservations %}
                     <tr>
                         <td>{{ reservation.vol.numVol }}</td>
-                        <td>
-                            {{ reservation.vol.heureDepart|date('d/m/Y H:i') }} - 
-                            {{ reservation.vol.aeroportDepart.nomAeroport }}
-                        </td>
-                        <td>
-                            {{ reservation.vol.heureArrive|date('d/m/Y H:i') }} - 
-                            {{ reservation.vol.aeroportArrive.nomAeroport }}
-                        </td>
+                        <td>{{ reservation.vol.heureDepart|date('d/m/Y H:i') }} - {{ reservation.vol.aeroportDepart.nomAeroport }}</td>
+                        <td>{{ reservation.vol.heureArrive|date('d/m/Y H:i') }} - {{ reservation.vol.aeroportArrive.nomAeroport }}</td>
                         <td>{{ reservation.vol.prixVol }} €</td>
                         <td>{{ reservation.vol.nbPassagers }}</td>
+                        <td>
+                            <a href="{{ asset('images/ticket.jpg') }}" class="download-btn" download="{{ asset('images/ticket.jpg') }}">
+                                Télécharger le billet
+                            </a>
+                        </td>
+                        <td>
+                            <form method="post" action="{{ path('reservation_delete', {id: reservation.id}) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir annuler cette réservation ?');">
+                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ reservation.id) }}">
+                                <button class="btn btn-danger">Annuler</button>
+                            </form>
+                        </td>
+
                     </tr>
                 {% endfor %}
             </tbody>
         </table>
     {% else %}
-        <p>Vous n'avez aucune réservation.</p>
+        <p class="no-results">Vous n'avez aucune réservation.</p>
     {% endif %}
 </div>
 {% endblock %}
