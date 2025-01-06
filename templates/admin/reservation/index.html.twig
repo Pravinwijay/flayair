@@ -1,12 +1,15 @@
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('styles/reservation/admin-style.css') }}">
     <link rel="stylesheet" href="{{ asset('styles/app.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
 <div class="dropdown-container">
     <div class="table-container">
-        <a href="{{ path('app_admin_accueil') }}" class="btn btn-secondary">Accueil</a>
+        <a href="{{ path('app_admin_accueil') }}" class="btn btn-secondary">
+            <i class="fa-solid fa-house"></i> Accueil
+        </a>
         <h1 class="table-title">Réservations</h1>
         <table class="table striped-table">
             <thead>

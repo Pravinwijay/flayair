@@ -1,40 +1,47 @@
-/* Conteneur de tableau pour les aéroports */
+
 .table-container {
     width: 100%;
-    max-width: 1200px; /* Largeur maximale pour un rendu responsive */
-    margin: 0 auto; /* Centrer horizontalement */
+    max-width: 1200px; 
+    margin: 0 auto; 
     padding: 20px;
 }
 
-/* Table des aéroports */
+
 table {
     width: 100%;
-    margin: 0 auto; /* Centrer la table */
+    margin: 0 auto; 
     border-collapse: collapse;
-    text-align: center; /* Centrer le texte des cellules */
+    text-align: center; 
 }
 
-/* Style des cellules de la table */
+
 th, td {
     padding: 12px;
-    border: 1px solid #ddd; /* Bordure légère pour chaque cellule */
+    border: 1px solid #ddd; 
 }
 
-/* Bouton personnalisé */
+
 .btn-custom {
-    padding: 8px 16px;
+    padding: 8px 0; 
     font-size: 14px;
     font-weight: bold;
     border-radius: 5px;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
+    display: block; 
     transition: background-color 0.3s ease, transform 0.2s ease;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 80%; /* Occupe toute la largeur de la cellule */
+    width: 100%; 
+    max-width: 120px; 
+    margin: 0 auto; 
 }
 
-/* Style pour le bouton "Modifier" */
+td {
+    vertical-align: middle; 
+    text-align: center; 
+}
+
+
 .btn-warning {
     background-color: #f0ad4e;
     border-color: #f39c12;
@@ -49,24 +56,24 @@ th, td {
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Optionnel : Focus du bouton "Modifier" */
+
 .btn-warning:focus {
-    outline: none; /* Enlever le contour par défaut */
-    box-shadow: 0 0 5px rgba(243, 156, 18, 0.7); /* Légère lueur autour du bouton */
+    outline: none; 
+    box-shadow: 0 0 5px rgba(243, 156, 18, 0.7); 
 }
 
-/* Centrer le bouton "Modifier" */
+
 td .btn-warning {
-    margin: 0 auto; /* Centrer le bouton dans la cellule */
-    display: block; /* Faire du bouton un élément bloc */
+    margin: 0 auto; 
+    display: block; 
 }
 
-/* Désactiver les styles par défaut pour les liens */
+
 a {
     all: unset;
 }
 
-/* Style pour le bouton "Supprimer" */
+
 .btn-danger {
     background-color: rgb(240, 78, 78);
     border-color: rgb(243, 18, 18);
@@ -81,14 +88,14 @@ a {
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Optionnel : Focus du bouton "Supprimer" */
+
 .btn-danger:focus {
     outline: none;
     box-shadow: 0 0 5px rgba(243, 18, 18, 0.7);
 }
 
-/* Centrer les boutons dans la cellule */
+
 td .btn-danger {
-    margin: 0 auto; /* Centrer le bouton "Supprimer" */
-    display: block; /* Faire du bouton un élément bloc */
+    margin: 0 auto; 
+    display: block; 
 }

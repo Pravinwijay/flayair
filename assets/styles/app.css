@@ -56,4 +56,7 @@ body {
 a{
     all: unset;
 }
+.btn-secondary .fa-house {
+    margin-right: 5px; 
+}
 

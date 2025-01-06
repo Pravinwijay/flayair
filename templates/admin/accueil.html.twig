@@ -3,87 +3,17 @@
 
 
 {% block body %}
-<style>
-    body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        background-color: #f8f9fa;
-    }
 
-    .admin-header {
-        background: url('{{ asset("assets/images/admin-background.jpg") }}') no-repeat center center/cover;
-        height: 200px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        font-size: 24px;
-        font-weight: bold;
-        text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
-    }
 
-    .container {
-        max-width: 1200px;
-        margin: 20px auto;
-        padding: 20px;
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap; /* Adapte les blocs si l'écran est trop petit */
-    }
 
-    .card {
-        flex: 1 0 18%; /* Définit une largeur minimale pour les blocs */
-        margin: 10px;
-        background: white;
-        border: 2px solid orange;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        overflow: hidden;
-    }
 
-    .card-header {
-        background-color: orange;
-        color: white;
-        text-align: center;
-        padding: 10px 0;
-        font-weight: bold;
-        font-size: 18px;
-    }
 
-    .card-content {
-        padding: 15px;
-        text-align: center;
-        font-size: 16px;
-        color: #333;
-    }
-
-    .card-content a {
-        display: block;
-        margin: 5px 0;
-        text-decoration: none;
-        color: #333;
-        font-weight: bold;
-    }
-
-    .card-content a:hover {
-        color: orange;
-    }
-    .banniere {
-    width: 100%; /* La div occupe toute la largeur de l'écran */
-    overflow: hidden; /* Pour éviter les débordements si l'image est plus grande */
-    margin: 0; /* Supprime les marges par défaut */
-    padding: 0;
-}
-
-.banniere img {
-    width: 100%; /* L'image remplit la largeur du conteneur */
-    height: 300px; /* L'image garde ses proportions */
-    display: block; /* Évite les marges blanches causées par les images inline */
-}
-
-</style>
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('styles/accueilAdmin/style.css') }}">
+    
+{% endblock %}
 <div class="banniere">
-    <img src="{{ asset('assets/images/banniereAdmin.jpg') }}" alt="Gestion">
+    <img src="{{ asset('../assets/images/banniereAccueilAdmin.jpg') }}" alt="Bannière Administration">
 </div>
 <div class="admin-header">
     BIENVENUE DANS L'ADMINISTRATION

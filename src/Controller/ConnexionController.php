@@ -41,11 +41,11 @@ class ConnexionController extends AbstractController
 
                     // Redirection en fonction du rôle
                     if ($categorieUtilisateur === 'utilisateur') {
-                        // Si l'utilisateur est un utilisateur normal, redirection vers la page de réservation
+                        
                         return $this->redirectToRoute('app_reservation');
                     } elseif ($categorieUtilisateur === 'administrateur') {
-                        // Si l'utilisateur est un administrateur, redirection vers l'accueil de l'admin
-                        return $this->redirectToRoute('app_admin_accueil'); // Assurez-vous que cette route existe dans votre projet
+                       
+                        return $this->redirectToRoute('app_admin_accueil'); 
                     } else {
                         // Si l'utilisateur n'a pas un rôle reconnu
                         $this->addFlash('error', 'Rôle inconnu');
