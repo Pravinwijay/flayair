@@ -1,5 +1,5 @@
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('styles/avion/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('styles/reservation/admin-style.css') }}">
     <link rel="stylesheet" href="{{ asset('styles/app.css') }}">
 {% endblock %}
 
@@ -7,29 +7,33 @@
 <div class="dropdown-container">
     <div class="table-container">
         <a href="{{ path('app_admin_accueil') }}" class="btn btn-secondary">Accueil</a>
-        <h1 class="table-title">Avions</h1>
+        <h1 class="table-title">Réservations</h1>
         <table class="table striped-table">
             <thead>
                 <tr>
                     <th>
-                        <i class="fa-solid fa-plane icon-airplane"></i> Modèle
+                        <i class="fa-solid fa-user icon-user"></i> Utilisateur
                     </th>
                     <th>
-                        <i class="fa-solid fa-users icon-users"></i> Nombre de places
+                        <i class="fa-solid fa-plane icon-flight"></i> Vol
                     </th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
-                {% for avion in avions %}
+                {% for reservation in reservations %}
                 <tr>
-                    <td>{{ avion.modele }}</td>
-                    <td>{{ avion.nbPlaces }}</td>
                     <td>
-                        <a href="{{ path('app_admin_avion_edit', { 'id': avion.id }) }}" class="btn btn-warning btn-sm btn-custom">
+                        {{ reservation.utilisateur.nom }}
+                    </td>
+                    <td>
+                        {{ reservation.vol.numVol}}
+                    </td>
+                    <td>
+                        <a href="{{ path('app_admin_reservation_edit', { 'id': reservation.id }) }}" class="btn btn-warning btn-sm btn-custom">
                             Modifier
                         </a>
-                        <form action="{{ path('app_admin_avion_delete', { 'id': avion.id }) }}" method="POST" style="display: inline;">
+                        <form action="{{ path('app_admin_reservation_delete', { 'id': reservation.id }) }}" method="POST" style="display: inline;">
                             <button type="submit" class="btn btn-danger btn-sm btn-custom">
                                 Supprimer
                             </button>

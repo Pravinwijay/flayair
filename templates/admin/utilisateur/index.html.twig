@@ -1,5 +1,5 @@
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('styles/avion/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('styles/utilisateur/admin-style.css') }}">
     <link rel="stylesheet" href="{{ asset('styles/app.css') }}">
 {% endblock %}
 
@@ -7,32 +7,33 @@
 <div class="dropdown-container">
     <div class="table-container">
         <a href="{{ path('app_admin_accueil') }}" class="btn btn-secondary">Accueil</a>
-        <h1 class="table-title">Avions</h1>
+        <h1 class="table-title">Utilisateurs</h1>
         <table class="table striped-table">
             <thead>
                 <tr>
                     <th>
-                        <i class="fa-solid fa-plane icon-airplane"></i> Modèle
+                        <i class="fa-solid fa-user icon-user"></i> Nom
                     </th>
                     <th>
-                        <i class="fa-solid fa-users icon-users"></i> Nombre de places
+                        <i class="fa-solid fa-envelope icon-email"></i> Email
                     </th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
-                {% for avion in avions %}
+                {% for utilisateur in utilisateurs %}
                 <tr>
-                    <td>{{ avion.modele }}</td>
-                    <td>{{ avion.nbPlaces }}</td>
+                    <td>{{ utilisateur.nom }}</td>
+                    <td>{{ utilisateur.mail }}</td>
                     <td>
-                        <a href="{{ path('app_admin_avion_edit', { 'id': avion.id }) }}" class="btn btn-warning btn-sm btn-custom">
+                        <a href="{{ path('app_admin_utilisateur_edit', { 'id': utilisateur.id }) }}" class="btn btn-warning btn-sm btn-custom">
                             Modifier
                         </a>
-                        <form action="{{ path('app_admin_avion_delete', { 'id': avion.id }) }}" method="POST" style="display: inline;">
+                        <form action="{{ path('app_admin_utilisateur_delete', { 'id': utilisateur.id }) }}" method="POST" style="display: inline;">
                             <button type="submit" class="btn btn-danger btn-sm btn-custom">
                                 Supprimer
                             </button>
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ utilisateur.id) }}">
                         </form>
                     </td>
                 </tr>

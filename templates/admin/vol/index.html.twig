@@ -1,37 +1,45 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}Réserver{% endblock %}
-
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('styles/vol/style.css') }}">
-	<link rel="stylesheet" href="{{ asset('styles/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('styles/vol/admin-style.css') }}">
+    <link rel="stylesheet" href="{{ asset('styles/app.css') }}">
 {% endblock %}
 
 {% block content %}
 <div class="dropdown-container">
     <div class="table-container">
-        <h1 class="table-title">Nos Destinations</h1>
+        <a href="{{ path('app_admin_accueil') }}" class="btn btn-secondary">Accueil</a>
+        <h1 class="table-title">Vols</h1>
         <table class="table striped-table">
             <thead>
                 <tr>
-                    <th>
-                       <i class="fa-solid fa-plane-departure icon-departure"></i>  De 
-                    </th>
-                    <th>
-                        <i class="fa-solid fa-plane-arrival icon-arrival"></i>  À
-                    </th>
+                    <th>Numéro de vol</th>
+                    <th>Avion</th>
+                    <th>Aéroport de départ</th>
+                    <th>Aéroport d'arrivée</th>
+                    <th>Heure de départ</th>
+                    <th>Heure d'arrivée</th>
+                    <th>Prix</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
                 {% for vol in vols %}
                 <tr>
+                    <td>{{ vol.numVol }}</td>
+                    <td>{{ vol.avion.modele }}</td>
+                    <td>{{ vol.aeroportDepart.nomAeroport }}</td>
+                    <td>{{ vol.aeroportArrive.nomAeroport }}</td>
+                    <td>{{ vol.heureDepart|date('H:i') }}</td>
+                    <td>{{ vol.heureArrive|date('H:i') }}</td>
+                    <td>{{ vol.prixVol }} €</td>
                     <td>
-                        {{ vol.aeroportDepart.nomAeroport }} -
-                        <strong>{{ vol.aeroportDepart.ville.nom }}, {{ vol.aeroportDepart.ville.pays }}</strong>
-                    </td>
-                    <td>
-                        {{ vol.aeroportArrive.nomAeroport }} -
-                        <strong>{{ vol.aeroportArrive.ville.nom }}, {{ vol.aeroportArrive.ville.pays }}</strong>
+                        <a href="{{ path('app_admin_vol_edit', { 'id': vol.id }) }}" class="btn btn-warning btn-sm btn-custom">
+                            Modifier
+                        </a>
+                        <form action="{{ path('app_admin_vol_delete', { 'id': vol.id }) }}" method="POST" style="display: inline;">
+                            <button type="submit" class="btn btn-danger btn-sm btn-custom">
+                                Supprimer
+                            </button>
+                        </form>
                     </td>
                 </tr>
                 {% endfor %}

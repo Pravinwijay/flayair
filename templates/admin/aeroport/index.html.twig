@@ -1,20 +1,54 @@
-{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('styles/aeroport/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('styles/app.css') }}">
+{% endblock %}
 
-{% block title %}Hello AeroportController!{% endblock %}
-
-{% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/Users/ayoub/FlyAir/flyair/src/Controller/AeroportController.php</code></li>
-        <li>Your template at <code>C:/Users/ayoub/FlyAir/flyair/templates/aeroport/index.html.twig</code></li>
-    </ul>
+{% block content %}
+<div class="dropdown-container">
+    <div class="table-container">
+        <a href="{{ path('app_admin_accueil') }}" class="btn btn-secondary">Accueil</a>
+        <h1 class="table-title">Aéroports</h1>
+        <table class="table striped-table">
+            <thead>
+                <tr>
+                    <th>
+                        <i class="fa-solid fa-plane-departure icon-airport"></i> Nom de l'Aéroport
+                    </th>
+                    <th>
+                        <i class="fa-solid fa-location-dot icon-location"></i> Ville
+                    </th>
+                    <th>
+                        <i class="fa-solid fa-flag icon-country"></i> Pays
+                    </th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for aeroport in aeroports %}
+                <tr>
+                    <td>
+                        {{ aeroport.nomAeroport }}
+                    </td>
+                    <td>
+                        {{ aeroport.ville.nom }}
+                    </td>
+                    <td>
+                        {{ aeroport.ville.pays }}
+                    </td>
+                    <td>
+                        <a href="{{ path('app_admin_aeroport_edit', { 'id': aeroport.id }) }}" class="btn btn-warning btn-sm btn-custom">
+                            Modifier
+                        </a>
+                        <form action="{{ path('app_admin_aeroport_delete', { 'id': aeroport.id }) }}" method="POST" style="display: inline;">
+                            <button type="submit" class="btn btn-danger btn-sm btn-custom">
+                                Supprimer
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </div>
 {% endblock %}

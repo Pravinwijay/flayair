@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controller\Admin;
 
 use App\Entity\Utilisateur;
@@ -42,5 +43,37 @@ class UtilisateurController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
-}
 
+    #[Route('/{id}/edit', name: 'app_admin_utilisateur_edit', methods: ['GET', 'POST'])]
+    public function edit(Request $request, Utilisateur $utilisateur, EntityManagerInterface $manager): Response
+    {
+        $form = $this->createForm(UtilisateurType::class, $utilisateur);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $manager->flush();
+
+            $this->addFlash('success', 'Utilisateur modifié avec succès !');
+            return $this->redirectToRoute('app_admin_utilisateur');
+        }
+
+        return $this->render('admin/utilisateur/edit.html.twig', [
+            'form' => $form->createView(),
+            'utilisateur' => $utilisateur,
+        ]);
+    }
+
+    #[Route('/{id}/delete', name: 'app_admin_utilisateur_delete', methods: ['POST'])]
+    public function delete(Request $request, Utilisateur $utilisateur, EntityManagerInterface $manager): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$utilisateur->getId(), $request->request->get('_token'))) {
+            $manager->remove($utilisateur);
+            $manager->flush();
+
+            $this->addFlash('success', 'Utilisateur supprimé avec succès !');
+        }
+
+        return $this->redirectToRoute('app_admin_utilisateur');
+    }
+}
