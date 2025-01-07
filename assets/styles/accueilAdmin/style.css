@@ -68,6 +68,7 @@
         color: orange;
     }
     .banniere {
+      
     width: 100%; 
     overflow: hidden; 
     margin: 0; 
@@ -75,9 +76,108 @@
 }
 
 .banniere img {
+   
     width: 100%; 
     height: 300px; 
     object-fit: cover;
     display: block; 
     
+}
+.action-button-out {
+    position: absolute; 
+    top: 20px; 
+    right: 20px;
+    background-color: #fc4a04;
+    color: white;
+    border: white 1px solid;
+    border-radius: 4px;
+    padding: 12px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    gap: 16px; 
+    z-index: 2;
+}
+.action-button-out:hover {
+    background-color: white;
+    color: #fc4a04;
+    border: #fc4a04 1px solid;
+}
+
+
+
+
+
+.image-container {
+    position: relative;
+    width: 100%;
+    height: 30%; 
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    top: 90%;
+    left: 0;
+    width: 100%;
+    padding: 0;
+    z-index: 2;
+}
+
+.action-button {
+    background-color: #fca004;
+    color: white;
+    border: white 1px solid;
+    border-radius: 4px;
+    padding: 12px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 22%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    gap: 16px; 
+}
+
+.action-button:hover {
+    background-color: white;
+    color: #fca004;
+    border: #fca004 1px solid;
+}
+
+a{
+    all: unset;
+}
+.btn-secondary .fa-house {
+    margin-right: 5px; 
+}
+
+.action-button-out {
+    background-color: #fc4a04;
+    color: white;
+    border: white 1px solid;
+    border-radius: 4px;
+    padding: 12px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 22%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    gap: 16px; 
+}
+.action-button-out:hover {
+    background-color: white;
+    color: #fc4a04;
+    border: #fc4a04 1px solid;
 }

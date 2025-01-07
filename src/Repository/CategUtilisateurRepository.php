@@ -15,4 +15,12 @@ class CategUtilisateurRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, CategUtilisateur::class);
     }
+    public function findOneByLibelle(string $libelle): ?CategUtilisateur
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.libelle = :libelle')
+            ->setParameter('libelle', $libelle)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
 }

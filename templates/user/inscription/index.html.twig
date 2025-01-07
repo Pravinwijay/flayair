@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription - Fly Air</title>
+    <link rel="stylesheet" href="{{ asset('styles/connexion/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="image-container">
+            <div class="form">
+                <h2>INSCRIVEZ-VOUS À
+                    <span>myFLY-AIR</span>
+                </h2>
+              <form action="{{ path('app_inscription') }}" method="POST">
+    <div>
+        <label for="nom">Nom</label>
+        <input type="text" id="nom" name="nom" placeholder="Nom" required>
+    </div>
+    <div>
+        <label for="prenom">Prénom</label>
+        <input type="text" id="prenom" name="prenom" placeholder="Prénom" required>
+    </div>
+    <div>
+        <label for="mail">Adresse e-mail</label>
+        <input type="email" id="mail" name="mail" placeholder="email@email.com" required>
+    </div>
+    <div>
+        <label for="mdp">Mot de passe</label>
+        <input type="password" id="mdp" name="mdp" placeholder="Mot de passe" required>
+    </div>
+    <button type="submit">S'inscrire</button>
+</form>
+
+
+
+
+                {% for message in app.flashes('error') %}
+                    <div class="error">{{ message }}</div>
+                {% endfor %}
+                {% for message in app.flashes('success') %}
+                    <div class="success">{{ message }}</div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="text">
+                <h1>BIENVENUE CHEZ FLY
+                    <span>AIR</span>
+                </h1>
+                <p>Voyager n'a jamais été aussi simple et agréable ! Avec FlyAir, profitez d'une expérience unique dans les airs, que vous soyez en déplacement professionnel ou en vacances.</p>
+                <p>Découvrez nos destinations, nos offres exclusives, et réservez vos vols en toute simplicité. Connectez-vous pour accéder à vos réservations, consulter votre compte et bénéficier de services personnalisés.</p>
+                <p>Prêt pour votre prochaine aventure ? Envolez-vous avec nous dès aujourd'hui !</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

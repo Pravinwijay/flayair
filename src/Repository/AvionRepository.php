@@ -17,22 +17,17 @@ class AvionRepository extends ServiceEntityRepository
         $this->entityManager = $entityManager;
     }
 
-    // Utilisez la méthode de base findAll() sans la redéfinir
-    // public function findAll(): array {
-    //     return parent::findAll();
-    // }
-
-    // Méthode pour enregistrer un avion
+   
     public function save(Avion $avion): void
     {
         $this->entityManager->persist($avion);
         $this->entityManager->flush();
     }
 
-    // Méthode pour insérer un avion (vous pouvez appeler save ici si vous le souhaitez)
+    
     public function insertAvion(Avion $avion): void
     {
-        $this->save($avion); // Appelle la méthode save() pour insérer l'avion
+        $this->save($avion); 
     }
 }
 

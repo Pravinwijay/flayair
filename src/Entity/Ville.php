@@ -17,7 +17,7 @@ class Ville
     private ?string $nom = null;
 
     #[ORM\Column]
-    private ?int $cp = null; // Code postal
+    private ?int $cp = null; 
 
     #[ORM\Column(length: 255)]
     private ?string $pays = null;

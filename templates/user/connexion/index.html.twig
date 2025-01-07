@@ -34,7 +34,7 @@
 						</div>
 						<a href="#">MDP oublié ?</a>
 						<button type="submit">VALIDER</button> <br> <br>
-						<a href="#" id="signup-link">Pas de compte ? Inscrivez-vous !</a>
+						<a href="{{ path('app_inscription') }}" >Pas de compte ? Inscrivez-vous !</a>
 					</form>
 					{% for message in app.flashes('error') %}
                     	<div class="error">{{ message }}</div>

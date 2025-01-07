@@ -53,7 +53,7 @@ class Vol
         $this->reservations = new ArrayCollection();
     }
 
-    // Les getters et setters restent identiques
+   
     public function getId(): ?int
     {
         return $this->id;
